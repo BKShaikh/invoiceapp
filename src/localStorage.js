@@ -5,9 +5,12 @@ import {
 
 class LocalStorage extends Component {
 
-    async saveUserSession(userid, password) {
-        this.storeItem("user_id", userid);
-        this.storeItem("user_pass", password);
+    async saveUserSession(userid, password,token,role,expiresOn) {
+        this.storeItem("userId", userid);
+        this.storeItem("userPass", password);
+        this.storeItem("token",token);
+        this.storeItem("userRole",role);
+        this.storeItem("tokenExpiry",expiresOn);
     }
 
     async storeItem(key, item) {
@@ -42,5 +45,5 @@ class LocalStorage extends Component {
         AsyncStorage.clear();
     }
 }
-
+const localStorage = new localStorage();
 export default LocalStorage;

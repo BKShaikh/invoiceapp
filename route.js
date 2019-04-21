@@ -9,12 +9,20 @@ import AddCustomer from './src/components/customers/addCustomer';
 import CustomerDetail from './src/components/customers/customerDetail';
 import AddInvoice from './src/components/invoices/addInvoice';
 import EditInvoice from './src/components/invoices/editInvoice';
-
+import Profile from './src/components/profile/index';
+import Company from './src/components/companies/index';
+import AddCompany from './src/components/companies/addCompanies';
+import EditCompany from './src/components/companies/companyDetails';
 const route = createStackNavigator({
+  AddCompany: {screen: AddCompany},
+  Company: {screen: Company},
+  EditCompany: {screen: EditCompany},
+  Invoices: { screen: Invoices },
+  Profile: { screen: Profile },
+  SignUp: { screen: SignUp },
   Invoices: { screen: Invoices },
   Login: { screen: Login },
   DashBoard: { screen: DashBoard },
-  SignUp: { screen: SignUp },
   ForgetPassword: { screen: ForgetPassword },
   Customers: { screen: Customers },
   AddCustomer: { screen: AddCustomer },

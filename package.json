@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "devserver": "live-server --browser=Firefox"
   },
   "dependencies": {
     "fsevents": "^1.2.7",

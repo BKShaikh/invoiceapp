@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {
   View,
+  TextView,
   Text,
   TextInput,
   TouchableWithoutFeedback,
@@ -9,30 +10,28 @@ import {
 } from "react-native";
 import { withNavigation } from "react-navigation";
 import common from "../../common.js";
-class SignUp extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fullName: "bila",
-      email: "as@c.com",
-      phone: "123",
-      password: "Abc123++"
-    };
+        fullName: "bila",
+        email: "as@c.com",
+        phone: "123",
+        password: "Abc123++",
+        newPassword:"",
+      };
   }
-  login = () => {
-    this.props.navigation.navigate("Login");
-  };
-  signUpUser = async () => {
+  updateProfile = async () => {
     // if (common.checkNetworkStat()==false){
     //   console.log('Check Your Wifi/Mobile Data Connection')
     // }        will check internet connected or not
     // else{
     console.log("aa bhi rha hai ? ");
-    // if (this.state.fullName != "" && this.state.email != "" && this.state.password != "" && this.state.phone != "") {
+    // if (this.state.fullName != "" && this.state.email != "" && this.state.password != "" && this.state.phone != ""&& this.state.newPassword != "") {
     console.log("aa bhi rha hai ? sub mil gaya ");
     if (__DEV__) {
       await fetch(
-        "http://snova786-002-site17.etempurl.com/api/accounts/signup",
+        "http://snova786-002-site17.etempurl.com/api/accounts/UpdateProfile",
         {
           method: "POST",
           headers: {
@@ -44,7 +43,7 @@ class SignUp extends Component {
             email: this.state.email,
             phone: this.state.phone,
             password: this.state.password,
-            newPassword: null,
+            newPassword: this.state.newPassword,
             userStatus: 0
           })
         }
@@ -57,7 +56,8 @@ class SignUp extends Component {
             fullName: "",
             email: "",
             phone: "",
-            password: ""
+            password: "",
+            newPassword:""
           });
         })
         .catch(function(error) {
@@ -92,7 +92,7 @@ class SignUp extends Component {
   render() {
     return (
       <ScrollView>
-        <Text> Sign Up </Text>
+        <Text> Update Profile </Text>
         <View
           style={{
             // justifyContent:'center',
@@ -180,7 +180,7 @@ class SignUp extends Component {
             // backgroundColor:'red'
           }}
         >
-          <Text>Password:</Text>
+          <Text>Old Password:</Text>
           <TextInput
             style={{
               borderColor: "grey",
@@ -199,6 +199,33 @@ class SignUp extends Component {
         </View>
         <View
           style={{
+            // justifyContent:'center',
+            // alignItems: 'center',
+            width: "50%",
+            height: 100,
+            marginTop: 10
+            // backgroundColor:'red'
+          }}
+        >
+          <Text>New Password:</Text>
+          <TextInput
+            style={{
+              borderColor: "grey",
+              borderBottomWidth: 1,
+              height: 40
+            }}
+            value={this.state.newPassword}
+            onChangeText={e => {
+              this.setState({
+                newPassword: e
+              });
+            }}
+            secureTextEntry={true}
+            placeholder="New Password"
+          />
+        </View>
+        <View
+          style={{
             justifyContent: "center",
             alignItems: "center",
             marginTop: 10
@@ -209,26 +236,9 @@ class SignUp extends Component {
               style={{
                 fontWeight: "bold"
               }}
-              onPress={this.signUpUser}
+              onPress={this.updateProfile}
             >
-              Sign Up
-            </Text>
-          </TouchableWithoutFeedback>
-        </View>
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 10
-          }}
-        >
-          <TouchableWithoutFeedback onPress={this.login}>
-            <Text
-              style={{
-                fontWeight: "bold"
-              }}
-            >
-              Already have an account
+              Update Profile
             </Text>
           </TouchableWithoutFeedback>
         </View>
@@ -237,4 +247,4 @@ class SignUp extends Component {
   }
 }
 
-export default withNavigation(SignUp);
+export default withNavigation(Profile);
