@@ -45,5 +45,5 @@ class LocalStorage extends Component {
         AsyncStorage.clear();
     }
 }
-const localStorage = new localStorage();
+// const localStorage = new localStorage();
 export default LocalStorage;

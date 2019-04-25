@@ -14,14 +14,14 @@ import Company from './src/components/companies/index';
 import AddCompany from './src/components/companies/addCompanies';
 import EditCompany from './src/components/companies/companyDetails';
 const route = createStackNavigator({
-  AddCompany: {screen: AddCompany},
   Company: {screen: Company},
+  AddCompany: {screen: AddCompany},  
+  Login: { screen: Login },
   EditCompany: {screen: EditCompany},
   Invoices: { screen: Invoices },
   Profile: { screen: Profile },
   SignUp: { screen: SignUp },
   Invoices: { screen: Invoices },
-  Login: { screen: Login },
   DashBoard: { screen: DashBoard },
   ForgetPassword: { screen: ForgetPassword },
   Customers: { screen: Customers },
